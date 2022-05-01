@@ -116,7 +116,7 @@ class OscMessageBuilder(object):
         elif arg_value is None:
             arg_type = self.ARG_TYPE_NIL
         else:
-            raise ValueError('Infered arg_value type is not supported')
+            raise ValueError('Inferred arg_value type is not supported')
         return arg_type
 
     def build(self) -> OscMessage:
