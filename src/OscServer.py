@@ -23,6 +23,7 @@ class OscServer:
 
         self._callbacks = {}
         self._outgoing_messages = {}
+        self._last_message = None
 
         self._control_surface.schedule_message(0, self.advertize)
 
@@ -45,6 +46,7 @@ class OscServer:
             address: The OSC address (e.g. /frequency)
             params: A tuple of zero or more OSC params
         """
+
         now = time.time()
         locationParams = convertTuple(params[:-1])
         addressAndLocation = address + locationParams
@@ -60,7 +62,11 @@ class OscServer:
 
             try:
                 msg = msg_builder.build()
-                self._socket.sendto(msg.dgram, self._remote_addr)
+
+                if msg != self._last_message:
+                    self._last_message = msg
+                    self._socket.sendto(msg.dgram, self._remote_addr)
+
             except Exception as e:
                 raise e
 
