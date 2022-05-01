@@ -19,6 +19,12 @@ class OscMessage(object):
         self._parameters = []
         self._parse_datagram()
 
+    def __eq__(self, other):
+        if other is None:
+            return False
+        else:
+            return self.address == other.address and self._parameters == other._parameters
+
     def _parse_datagram(self) -> None:
         try:
             self._address_regexp, index = get_string(self._dgram, 0)
