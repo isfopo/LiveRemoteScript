@@ -79,8 +79,8 @@ class HandlerBase():
             remove_listener_function(listener_function)
             del self.listener_functions[(target, prop)]
 
-    # TODO add a clear all listeners method to be called by clear_api
-
     def _clear_listeners(self):
-        # TODO should call remove listener on all functions
+        for listener in self.listener_functions:
+            self._stop_listen(listener)
+
         self.listener_functions = {}
