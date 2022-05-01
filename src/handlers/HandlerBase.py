@@ -75,7 +75,6 @@ class HandlerBase():
             remove_listener_function_name = "remove_%s_listener" % prop
             remove_listener_function = getattr(
                 target, remove_listener_function_name)
-            self.manager.log_message(remove_listener_function_name)
             remove_listener_function(listener_function)
             del self.listener_functions[(target, prop)]
 
