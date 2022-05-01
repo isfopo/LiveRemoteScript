@@ -18,5 +18,4 @@ def convertTuple(tup: Tuple):
     """
         Changes a tuple value to a concatinated string
     """
-    st = ''.join(map(str, tup))
-    return st
+    return ''.join(map(str, tup))
