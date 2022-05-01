@@ -52,7 +52,7 @@ class OscServer:
         if addressAndLocation in self._outgoing_messages and now - self._outgoing_messages[addressAndLocation] > OUTGOING_MESSAGE_RATE_LIMIT or not addressAndLocation in self._outgoing_messages:
             if addressAndLocation in self._outgoing_messages:
                 self._outgoing_messages.pop(addressAndLocation)
-            self._outgoing_messages[addressAndLocation] = time.time()
+            self._outgoing_messages[addressAndLocation] = now
 
             msg_builder = OscMessageBuilder(address)
             for param in params:
