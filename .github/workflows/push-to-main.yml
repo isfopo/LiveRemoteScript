@@ -16,7 +16,7 @@ jobs:
         uses: papeloto/action-zip@v1
         with:
           files: src
-          dest: release.zip
+          dest: LiveRemote.zip
       - name: "Get Latest Tag"
         shell: bash
         run: |
@@ -28,4 +28,4 @@ jobs:
         with:
           tag_name: ${{ github.run_number }}
           release_name: ${{ github.run_number }}
-          files: release.zip
+          files: LiveRemote.zip
