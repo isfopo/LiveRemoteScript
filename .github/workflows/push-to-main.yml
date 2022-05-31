@@ -26,4 +26,6 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
+          tag_name: ${{ github.run_number }}
+          release_name: ${{ github.run_number }}
           files: release.zip
