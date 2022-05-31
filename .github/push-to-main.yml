@@ -1,0 +1,29 @@
+name: Push to Main
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  compile_and_release:
+    if: github.event_name == 'push' | (github.event_name == 'pull_request' && github.event.action != closed)
+    runs-on: ubuntu-latest
+    name: Compile and Release
+    steps:
+      - uses: actions/checkout@v2
+      - name: "Zip Script"
+        uses: papeloto/action-zip@v1
+        with:
+          files: src
+          dest: release.zip
+      - name: "Get Latest Tag"
+        shell: bash
+        run: |
+          git fetch --all --tags
+          echo "##[set-output name=tag;]$(git describe -- tags --abbrev=0)"
+        id: extract_latest_tag
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: release.zip
