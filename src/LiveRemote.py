@@ -13,6 +13,7 @@ from .handlers.ReturnTrackHandler import ReturnTrackHandler
 class LiveRemote(ControlSurface):
     __module__ = __name__
     __doc__ = "Proof of concept to send and receive Osc messages in Live via a remote script"
+    __version__ = "1.0.0"
 
     def __init__(self, c_instance):
         ControlSurface.__init__(self, c_instance)
