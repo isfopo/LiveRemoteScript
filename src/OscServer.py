@@ -29,7 +29,7 @@ class OscServer:
 
     def advertize(self):
         if self._remote_addr[0] == "<broadcast>":
-            self.send("/live/broadcast", [])
+            self.send("/live/broadcast", [self._control_surface.__version__])
             self._control_surface.show_message("looking for clients")
             self._control_surface.schedule_message(64, self.advertize)
         else:
