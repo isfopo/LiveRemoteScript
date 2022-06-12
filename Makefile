@@ -11,7 +11,7 @@ open-set:
 	open set/oscdevset.als
 
 reload:
-	npm run install-script && npm run close-set && npm run open-set
+	make install-script && make close-set && make open-set
 
 build:
 	python3 -m compileall src -x 'Live' -d ./build
