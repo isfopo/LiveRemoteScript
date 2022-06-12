@@ -12,6 +12,3 @@ open-set:
 
 reload:
 	make install-script && make close-set && make open-set
-
-build:
-	python3 -m compileall src -x 'Live' -d ./build
