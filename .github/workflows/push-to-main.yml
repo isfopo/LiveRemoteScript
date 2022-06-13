@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: "Get version"
         id: version
-        run: more ./src/version.txt >> current-version
+        run: more src/version.txt
       - uses: actions/checkout@v2
       - name: "Zip Script"
         uses: papeloto/action-zip@v1
