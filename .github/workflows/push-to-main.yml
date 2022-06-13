@@ -11,12 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     name: Compile and Release
     steps:
+      - uses: actions/checkout@v2
       - name: "Get version"
         id: version
         uses: andstor/file-reader-action@v1
         with:
           path: "./src/version.txt"
-      - uses: actions/checkout@v2
       - name: "Zip Script"
         uses: papeloto/action-zip@v1
         with:
