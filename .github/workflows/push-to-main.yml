@@ -18,7 +18,7 @@ jobs:
         with:
           path: "./src/version.txt"
       - name: File contents
-        run: echo "${ steps.version.outputs.contents }"
+        run: echo "${{ steps.version.outputs.contents }}"
       - name: "Zip Script"
         uses: papeloto/action-zip@v1
         with:
