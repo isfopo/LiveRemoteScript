@@ -11,10 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     name: Compile and Release
     steps:
-      - run: ls
       - name: "Get version"
         id: version
-        run: more ../../src/version.txt >> current-version
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: ./version.txt
       - uses: actions/checkout@v2
       - name: "Zip Script"
         uses: papeloto/action-zip@v1
@@ -30,6 +31,6 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ steps.version.outputs.current-version }}
-          name: ${{ steps.version.outputs.current-version }}
+          tag_name: ${{ steps.version.outputs.content }}
+          name: ${{ steps.version.outputs.content }}
           files: LiveRemote.zip
