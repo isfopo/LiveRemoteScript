@@ -15,7 +15,7 @@ jobs:
         id: version
         uses: juliangruber/read-file-action@v1
         with:
-          path: src/version.txt
+          path: ./src/version.txt
       - uses: actions/checkout@v2
       - name: "Zip Script"
         uses: papeloto/action-zip@v1
