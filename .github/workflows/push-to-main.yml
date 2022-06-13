@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Compile and Release
     steps:
+      - run: ls
       - name: "Get version"
         id: version
         run: more ../../src/version.txt >> current-version
