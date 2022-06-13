@@ -28,7 +28,6 @@ jobs:
           git fetch --all --tags
           echo "##[set-output name=tag;]$(git describe -- tags --abbrev=0)"
         id: extract_latest_tag
-      - run: echo "${{ steps.version.outputs.content }}""
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
