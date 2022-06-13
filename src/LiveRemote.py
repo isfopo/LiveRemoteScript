@@ -2,6 +2,7 @@ from __future__ import with_statement
 
 import Live
 from _Framework.ControlSurface import ControlSurface
+from .helpers.version import get_version
 from .handlers.SongHandler import SongHandler
 from .handlers.MasterTrackHandler import MasterTrackHandler
 
@@ -13,10 +14,10 @@ from .handlers.ReturnTrackHandler import ReturnTrackHandler
 class LiveRemote(ControlSurface):
     __module__ = __name__
     __doc__ = "Proof of concept to send and receive Osc messages in Live via a remote script"
-    __version__ = "1.0.0"
 
     def __init__(self, c_instance):
         ControlSurface.__init__(self, c_instance)
+        self.__version__ = get_version()
         self._live = Live.Application.get_application()
         self.song = self._live.get_document()
         self.handlers = []
