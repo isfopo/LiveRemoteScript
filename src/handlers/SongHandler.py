@@ -49,8 +49,8 @@ class SongHandler(HandlerBase):
             self.server.add_handler("/live/song/%s" % method, callback)
         for prop in self.properties_r + self.properties_rw:
             self.server.add_handler(
-                "/live/song/get/%s" % prop, partial(self._get, self.song, prop))
+                "/get/live/song/%s" % prop, partial(self._get, self.song, prop))
             self._start_listen(self.song, prop)
         for prop in self.properties_rw:
             self.server.add_handler(
-                "/live/song/set/%s" % prop, partial(self._set, self.song, prop))
+                "/set/live/song/%s" % prop, partial(self._set, self.song, prop))

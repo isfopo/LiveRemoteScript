@@ -89,20 +89,20 @@ class TrackHandler(HandlerBase):
             self.server.add_handler("/live/%s/%s" % (self.object, method),
                                     create_track_callback(self._call_method, method))
         for prop in self.properties_r + self.properties_rw:
-            self.server.add_handler("/live/%s/get/%s" % (self.object, prop),
+            self.server.add_handler("/get/live/%s/%s" % (self.object, prop),
                                     create_track_callback(self._get, prop))
         for prop in self.properties_rw:
-            self.server.add_handler("/live/%s/set/%s" % (self.object, prop),
+            self.server.add_handler("/set/live/%s/%s" % (self.object, prop),
                                     create_track_callback(self._set, prop))
 
         for method in self.mixer_methods:
             self.server.add_handler("/live/%s/%s" % (self.object, method),
                                     create_track_mixer_device_callback(self._call_method, method))
         for prop in self.mixer_properties_r + self.properties_rw:
-            self.server.add_handler("/live/%s/get/%s" % (self.object, prop),
+            self.server.add_handler("/get/live/%s/%s" % (self.object, prop),
                                     create_track_mixer_device_callback(self._get, prop))
         for prop in self.mixer_properties_rw:
-            self.server.add_handler("/live/%s/set/%s" % (self.object, prop),
+            self.server.add_handler("/set/live/%s/%s" % (self.object, prop),
                                     create_track_mixer_device_callback(self._set, prop))
 
         self.set_tracks_listeners()
@@ -134,9 +134,9 @@ class TrackHandler(HandlerBase):
                 return tuple(clip_slot.clip.length if clip_slot.clip else None for clip_slot in track.clip_slots)
 
             self.server.add_handler(
-                "/live/%s/get/clips/name", create_track_callback(track_get_clip_names))
+                "/get/live/%s/clips/name", create_track_callback(track_get_clip_names))
             self.server.add_handler(
-                "/live/%s/get/clips/length", create_track_callback(track_get_clip_lengths))
+                "/get/live/%s/clips/length", create_track_callback(track_get_clip_lengths))
 
         def track_get_num_devices(track, params: Tuple[Any]):
             return len(track.devices),
@@ -159,12 +159,12 @@ class TrackHandler(HandlerBase):
          - class_name: e.g. Operator, Reverb, AuPluginDevice, PluginDevice, InstrumentGroupDevice
         """
         self.server.add_handler(
-            "/live/%s/get/num_devices" % self.object, create_track_callback(track_get_num_devices))
+            "/get/live/%s/num_devices" % self.object, create_track_callback(track_get_num_devices))
         self.server.add_handler(
-            "/live/%s/get/devices/name" % self.object, create_track_callback(track_get_device_names))
+            "/get/live/%s/devices/name" % self.object, create_track_callback(track_get_device_names))
         self.server.add_handler(
-            "/live/%s/get/devices/type" % self.object, create_track_callback(track_get_device_types))
+            "/get/live/%s/devices/type" % self.object, create_track_callback(track_get_device_types))
         self.server.add_handler(
-            "/live/%s/get/devices/class_name" % self.object, create_track_callback(track_get_device_class_names))
-        self.server.add_handler("/live/%s/get/devices/can_have_chains" % self.object,
+            "/get/live/%s/devices/class_name" % self.object, create_track_callback(track_get_device_class_names))
+        self.server.add_handler("/get/live/%s/devices/can_have_chains" % self.object,
                                 create_track_callback(track_get_device_can_have_chains))
