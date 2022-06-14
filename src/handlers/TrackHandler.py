@@ -119,9 +119,9 @@ class TrackHandler(HandlerBase):
             track.mixer_device.sends[send_id].value = value
 
         self.server.add_handler(
-            "/live/%s/get/send" % self.object, create_track_callback(track_get_send))
+            "/get/live/%s/send" % self.object, create_track_callback(track_get_send))
         self.server.add_handler(
-            "/live/%s/set/send" % self.object, create_track_callback(track_set_send))
+            "/set/live/%s/send" % self.object, create_track_callback(track_set_send))
 
         """
         Returns a list of clip properties, or Nil if clip is empty
