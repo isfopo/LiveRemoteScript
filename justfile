@@ -11,4 +11,4 @@ open-set:
 	open set/oscdevset.als
 
 reload:
-	make install-script && make close-set && make open-set
+	just install-script && just close-set && just open-set
