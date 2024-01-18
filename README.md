@@ -1,4 +1,4 @@
-# LiveRemoteScript
+# LiveRemote
 
 A basic, unopinionated example of a Remote Script for Ableton Live 11. The goal of this script is to create a starting point for a new remote script with tools to help with development, like installing into an Ableton Live instance. It make no assumptions about your goals or the hardware you are using, so feel free to make anything you want. However, there's not much explanation here about what a Remote Script can do or how to do it. Luckily there are a few unofficial resources, like [Structure Void's Live API version 11 Documentation](https://structure-void.com/PythonLiveAPI_documentation/Live11.0.xml), [nsuspray API Documentation](https://nsuspray.github.io/Live_API_Doc/) or [Hanz Petrov's "Introduction to the Ableton Framework Classes"](http://remotescripts.blogspot.com/2010/03/introduction-to-framework-classes.html).
 
